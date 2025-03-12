@@ -6,15 +6,13 @@ import HeroSection from "./landing/HeroSection";
 import Features from "./landing/Features";
 import TestimonialSection from "./landing/TestimonialSection";
 import PricingSection from "./landing/PricingSection";
-import ChatWidget from "./landing/ChatWidget";
-import Footer from "./landing/Footer";
 import FAQ from "./landing/FAQ";
 import AnalyticsDashboard from "./landing/AnalyticsDashboard";
 import IntegrationHub from "./landing/IntegrationHub";
 import Blog from "./landing/Blog";
 
 const Home = () => {
-  const [showDemo, setShowDemo] = React.useState(false);
+  const [, setShowDemo] = React.useState(false);
   const [showConsultation, setShowConsultation] = React.useState(false);
 
   const handleDemoRequest = () => {
@@ -86,7 +84,7 @@ const Home = () => {
         <FAQ />
       </main>
 
-      <ChatWidget />
+     
 
       {/* Consultation Dialog */}
       <ConsultationDialog

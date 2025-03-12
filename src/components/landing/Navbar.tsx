@@ -27,9 +27,7 @@ import {
   FileText,
   Book,
   BookOpen,
-  ClipboardList,
   HelpCircle,
-  Video,
 } from "lucide-react";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 
@@ -42,15 +40,12 @@ interface NavbarProps {
 
 const defaultLogo = "/assets/LOGO.png";
 
-
-
 const Navbar = ({
   className = "",
-  onDemoClick = () => {},
-  onConsultationClick = () => {},
   logo = defaultLogo,
 }: NavbarProps) => {
   const navigate = useNavigate();
+
   interface MenuItem {
     title: string;
     items: Array<{
@@ -157,59 +152,28 @@ const Navbar = ({
       title: "Resources",
       items: [
         {
-          title: "Documentation",
-          description: "API docs and integration guides",
-          icon: <FileText className="h-5 w-5" />,
-          href: "/docs",
-        },
-        {
-          title: "Content Library",
-          description: "Guides, tutorials and resources",
-          icon: <Book className="h-5 w-5" />,
-          href: "/content",
-        },
-        {
           title: "Blog",
-          description: "Industry insights and updates",
-          icon: <BookOpen className="h-5 w-5" />,
-          href: "/blog",
+          description: "Latest news and insights",
+          icon: <FileText className="h-5 w-5" />,
+          href: "/resources/blog",
         },
         {
           title: "Case Studies",
-          description: "Customer success stories",
-          icon: <ClipboardList className="h-5 w-5" />,
-          href: "/case-studies",
+          description: "See our impact in action",
+          icon: <Book className="h-5 w-5" />,
+          href: "/resources/case-studies",
         },
         {
-          title: "Help Center",
-          description: "Guides and troubleshooting",
+          title: "Documentation",
+          description: "Guides and API reference",
+          icon: <BookOpen className="h-5 w-5" />,
+          href: "/resources/documentation",
+        },
+        {
+          title: "FAQ",
+          description: "Commonly asked questions",
           icon: <HelpCircle className="h-5 w-5" />,
-          href: "/help",
-        },
-        {
-          title: "Community",
-          description: "Join our user community",
-          icon: <Users className="h-5 w-5" />,
-          href: "/community",
-          comingSoon: true,
-        },
-        {
-          title: "API Documentation",
-          description: "API reference and guides",
-          icon: <FileText className="h-5 w-5" />,
-          href: "/api-docs",
-        },
-        {
-          title: "Partner Program",
-          description: "Join our partner ecosystem",
-          icon: <Users className="h-5 w-5" />,
-          href: "/partners",
-        },
-        {
-          title: "Privacy Policy",
-          description: "Our privacy commitments",
-          icon: <FileText className="h-5 w-5" />,
-          href: "/privacy",
+          href: "/resources/faq",
         },
       ],
     },
@@ -221,21 +185,13 @@ const Navbar = ({
         {/* Logo */}
         <div className="flex items-center">
           <div onClick={() => navigate("/")} className="cursor-pointer">
-          <LazyImage
-  src="/assets/LOGO.png"
-  alt="Captivite Logo"
-  className="w-40 h-40 object-contain"  // Increased size
-  fallback="https://api.dicebear.com/7.x/initials/svg?seed=C"
-/>
-
-
+            <LazyImage
+              src={logo}
+              alt="Company Logo"
+              className="w-40 h-40 object-contain"
+              fallback="https://api.dicebear.com/7.x/initials/svg?seed=C"
+            />
           </div>
-          <span
-            onClick={() => navigate("/")}
-            className="ml-2 text-xl font-bold cursor-pointer"
-          >
-            
-          </span>
         </div>
 
         {/* Desktop Navigation */}
@@ -265,11 +221,6 @@ const Navbar = ({
                                 New
                               </span>
                             )}
-                            {subItem.comingSoon && (
-                              <span className="px-2 py-0.5 text-xs bg-muted text-muted-foreground rounded-full">
-                                Coming Soon
-                              </span>
-                            )}
                           </div>
                           <p className="text-sm text-muted-foreground">
                             {subItem.description}
@@ -284,12 +235,13 @@ const Navbar = ({
           </NavigationMenu>
 
           <div className="flex items-center gap-4">
-            <Button variant="outline" onClick={onDemoClick}>
+            {/* Commented out Schedule Demo and Get Started buttons */}
+            {/* <Button variant="outline" onClick={onDemoClick}>
               Schedule Demo
             </Button>
             <Button onClick={() => navigate("/get-started")}>
               Get Started
-            </Button>
+            </Button> */}
           </div>
         </div>
 
@@ -324,21 +276,6 @@ const Navbar = ({
                     </div>
                   </div>
                 ))}
-                <div className="flex flex-col gap-3 pt-6">
-                  <Button
-                    variant="outline"
-                    onClick={onDemoClick}
-                    className="w-full"
-                  >
-                    Schedule Demo
-                  </Button>
-                  <Button
-                    onClick={() => navigate("/get-started")}
-                    className="w-full"
-                  >
-                    Get Started
-                  </Button>
-                </div>
               </div>
             </SheetContent>
           </Sheet>

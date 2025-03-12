@@ -6,12 +6,12 @@ import path from "path";
 // Add this block of code
 const conditionalPlugins = [];
 if (process.env.TEMPO === "true") {
-  conditionalPlugins.push(["tempo-devtools/swc", {}]);
+  conditionalPlugins.push(["tempo-devtools/swc", {}] as [string, Record<string, any>]);
 }
 
 // https://vitejs.dev/config/
 export default defineConfig({
-  base: process.env.VERCEL_ENV ? "/" : "/CAPTIVITE-X/",
+
   // 👈 Add this line for GitHub Pages
   plugins: [
     react({
